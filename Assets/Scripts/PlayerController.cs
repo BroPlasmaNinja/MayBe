@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float angleX;
     private float angleY;
     private CharacterController controller;
+    RaycastHit hit;
+    [SerializeField] GameManager gm;
     #endregion
     #region HackerCanUse)
     [SerializeField] private float speed;
@@ -47,5 +49,10 @@ public class PlayerController : MonoBehaviour
         else
             controller.Move(move * speed * Time.deltaTime * 1.5f);
         #endregion
+        if (Input.GetMouseButtonDown(0) && Physics.Raycast(gameObject.transform.GetChild(0).GetComponent<Camera>().ViewportToWorldPoint(new Vector3(0.5f, 0.5f)), gameObject.transform.GetChild(0).transform.forward, out hit)&& hit.transform.GetComponent<WhoIAm>())
+        {
+            if (hit.transform.GetComponent<WhoIAm>().myName == "VR") ;
+            gm.LoadNextLevel();
+        }
     }
 }
