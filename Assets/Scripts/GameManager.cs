@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private int NumOfLevel;
+    [SerializeField]private int NumOfLevel;
     public void LoadNextLevel()
     {
         NumOfLevel++;
